@@ -1,6 +1,10 @@
 import Foundation
 import SwiftUI
 
+public enum TabCoordinatableMode {
+    case `default`
+    case playStation(PlayStationTabbarConfiguration)
+}
 /// The TabCoordinatable is used to represent a coordinator with a TabView
 public protocol TabCoordinatable: Coordinatable {
     typealias Route = TabRoute
@@ -10,6 +14,8 @@ public protocol TabCoordinatable: Coordinatable {
     var routerStorable: RouterStoreType { get }
 
     var child: TabChild { get }
+    
+    var mode: TabCoordinatableMode { get }
 
     associatedtype CustomizeViewType: View
 
@@ -42,6 +48,11 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
+    
+    var mode: TabCoordinatableMode {
+        return .default
+    }
+    
     var routerStorable: Self {
         get {
             self
