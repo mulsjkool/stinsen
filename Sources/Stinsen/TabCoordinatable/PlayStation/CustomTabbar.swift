@@ -31,8 +31,8 @@ struct PlayStationTabbarContainerView<T: TabCoordinatable>: View {
                     .padding(.bottom, 16)
             }
             PlayStationCustomTabbarView(coordinator: coordinator, activeTab: $activeTab, totalTab: CGFloat(views.count), configuration: configration)
+                .ignoresSafeArea(.all, edges: .bottom)
         }
-        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
