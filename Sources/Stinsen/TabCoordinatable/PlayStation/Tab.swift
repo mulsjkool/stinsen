@@ -17,38 +17,46 @@ public struct PlayStationTabbarConfiguration {
     }
 }
 
-public enum PlayStationTabbarTheme {
+public protocol PlayStationTabbarTheme {
+    var titleColor: Color { get }
+    var titleFont: Font { get }
+    var glows: (Color, Color) { get }
+    var backgroundColor: Color { get }
+    var tabBackgroundColor: Color { get }
+}
+
+public enum PlayStationTabbarThemeCase: PlayStationTabbarTheme {
     case dark
     
-    var titleColor: Color {
+    public var titleColor: Color {
         switch self {
         case .dark:
             return Color.white
         }
     }
     
-    var titleFont: Font {
+    public var titleFont: Font {
         switch self {
         case .dark:
             return Font.system(size: 14, weight: .semibold)
         }
     }
     
-    var glows: (Color, Color) {
+    public var glows: (Color, Color) {
         switch self {
         case .dark:
             return (Color.white, Color.fromRGB(red: 0, green: 134, blue: 228))
         }
     }
     
-    var backgroundColor: Color {
+    public var backgroundColor: Color {
         switch self {
         case .dark:
             return Color.fromRGB(red: 18, green: 20, blue: 21)
         }
     }
     
-    var tabBackgroundColor: Color {
+    public var tabBackgroundColor: Color {
         switch self {
         case .dark:
             return Color.fromRGB(red: 47, green: 57, blue: 61)
